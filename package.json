@@ -1,13 +1,35 @@
 {
   "name": "zkredit",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "ZKredit - Zero-Knowledge Credit Assessment and Remittance System",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pnpm run --parallel dev",
+    "build": "pnpm run --recursive build",
+    "test": "pnpm run --recursive test",
+    "test:unit": "pnpm run --filter=@zkredit/agent-backend test:unit",
+    "test:integration": "pnpm run --filter=@zkredit/agent-backend test:integration",
+    "test:contracts": "pnpm run --filter=@zkredit/contracts test",
+    "lint": "pnpm run --recursive lint",
+    "clean": "pnpm run --recursive clean",
+    "demo:scenario1": "pnpm run --filter=@zkredit/demo scenario1",
+    "demo:scenario2": "pnpm run --filter=@zkredit/demo scenario2",
+    "generate-test-data": "pnpm run --filter=@zkredit/demo generate-test-data"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "packageManager": "pnpm@8.0.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
 }
